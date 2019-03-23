@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="RTM|Win32">
+      <Configuration>RTM</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RTM|x64">
+      <Configuration>RTM</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D6973076-9317-4EF2-A0B8-B7A18AC0713E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libpng</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'" Label="Configuration">
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RTM|x64'" Label="Configuration">
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="..\..\..\..\RxModuleData.props" />
+    <Import Project="..\..\..\..\..\..\..\_global\PropSheets\RxStdPaths.props" />
+    <Import Project="..\..\..\..\..\..\..\_global\PropSheets\RxStdTypeLib.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='RTM|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="..\..\..\..\RxModuleData.props" />
+    <Import Project="..\..\..\..\..\..\..\_global\PropSheets\RxStdPaths.props" />
+    <Import Project="..\..\..\..\..\..\..\_global\PropSheets\RxStdTypeLib.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <CustomBuildBeforeTargets />
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <CustomBuildBeforeTargets />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <CompileAs>CompileAsC</CompileAs>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <DisableSpecificWarnings>4996;4127</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\zlib-1.2.6;$(ProjectDir)..\..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <Optimization>Full</Optimization>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib />
+    <PreBuildEvent>
+      <Command>xcopy "$(ProjectDir)..\..\..\*.h" "$(RxIncludeDir)$(RxModName)-$(RxModVerShort)\libpng" /R /Y /Q /I /EXCLUDE:$(RxGlobalDir)Exclude.txt</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)..\..\..\*.h" "$(RxDistModDir)$(RxModName)-$(RxModVerShort)\_include\$(RxModName)-$(RxModVerShort)\libpng" /R /Y /Q /I /EXCLUDE:$(RxGlobalDir)Exclude.txt
+call "$(RxGlobalDir)Tools\BuildEvent_CopyDistOutput.bat" LIB $(TargetPath)
+
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <CompileAs>CompileAsC</CompileAs>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <DisableSpecificWarnings>4996;4127</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\zlib-1.2.6;$(ProjectDir)..\..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <Optimization>Full</Optimization>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib />
+    <PreBuildEvent>
+      <Command>xcopy "$(ProjectDir)..\..\..\*.h" "$(RxIncludeDir)$(RxModName)-$(RxModVerShort)\libpng" /R /Y /Q /I /EXCLUDE:$(RxGlobalDir)Exclude.txt</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)..\..\..\*.h" "$(RxDistModDir)$(RxModName)-$(RxModVerShort)\_include\$(RxModName)-$(RxModVerShort)\libpng" /R /Y /Q /I /EXCLUDE:$(RxGlobalDir)Exclude.txt
+call "$(RxGlobalDir)Tools\BuildEvent_CopyDistOutput.bat" LIB $(TargetPath)
+
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\png.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngerror.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngget.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngmem.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngpread.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngread.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngrio.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngrtran.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngrutil.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngset.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngtrans.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngwio.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngwrite.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngwtran.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\pngwutil.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\scripts\pngwin.rc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RTM|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RTM|x64'">true</ExcludedFromBuild>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
